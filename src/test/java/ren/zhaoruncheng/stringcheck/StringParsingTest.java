@@ -15,7 +15,9 @@ public class StringParsingTest {
 	public void testGetResultAssembly() {
 		String source="   pre142341654suf\r\n pre142341654suf  \r\n  pre142341654suf \r\n  pre142341654suf";
 		System.out.println(source);
-		String[] result=StringParsing.getResultAssembly(source,"pre","suf");
+		System.out.println("==================result==================");
+		StringParsing sParsing=new StringParsing(source,"pre","suf");
+		String[] result=sParsing.getResultAssembly();
 		for(int i=0;i<result.length;i++)
 		System.out.println(result[i]);
 			
