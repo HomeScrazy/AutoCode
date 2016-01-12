@@ -13,10 +13,13 @@ public class MapperReflectWrappingTest {
 
 	@Test
 	public void testGetMapperReflectionString() {
-		String source="   pre142341654suf\r\n pre142341654suf  \r\n  pre142341654suf \r\n  pre142341654suf";
+		String source="   pre142341655suf\r\n pre142341654suf  \r\n  pre142341654suf \r\n  pre142341654suf";
 		System.out.println(source);
 		StringParsing sParsing=new StringParsing(source,"pre","suf");
 		MapperReflectWrapping mRW=new MapperReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
+		mRW.setId("pre142341655");
+		mRW.setName("Test");
+		mRW.setClassName("com.runcheng.stringcheck");
 		System.out.println("==================result==================");
 		System.out.println(mRW.getMapperReflectionString());
 		fail("Not yet implemented");
