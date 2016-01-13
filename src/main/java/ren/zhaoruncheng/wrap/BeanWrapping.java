@@ -22,8 +22,8 @@ public class BeanWrapping extends BaseWrapping {
 		sb.append(beanName);
 		sb.append("{");
 		sb.append(enterKey);
-		sb.append(tabSize);
 		for(int i=0;i<porpertyAssembly.length;i++){
+			sb.append(tabSize);
 			
 		}
 		
