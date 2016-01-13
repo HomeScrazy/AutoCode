@@ -30,6 +30,9 @@ public class MapperReflectWrapping {
 	private String className;
 	
 	public String getMapperReflectionString(){
+		/*
+		 * build the reflect string with the format
+		 */
 		if(sourceAssembly.length!=resultAssembly.length) return null;
 		StringBuilder mapper=new StringBuilder();
 		mapper.append("<resultMap id=\"");
@@ -47,7 +50,7 @@ public class MapperReflectWrapping {
 			if(resultAssembly[i].equals(id)) continue;
 			mapper.append("  ");
 			mapper.append(" <result property=\"");
-			mapper.append(resultAssembly[i]);
+			mapper.append(StringChecking.propertyTransformFormDatabaseToObject(resultAssembly[i]));
 			mapper.append("\" column=\"");
 			mapper.append(sourceAssembly[i]);
 	        mapper.append("\" />\r\n");

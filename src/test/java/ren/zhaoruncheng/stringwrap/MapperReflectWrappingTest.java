@@ -1,10 +1,11 @@
 package ren.zhaoruncheng.stringwrap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import ren.zhaoruncheng.sourcedata.ImportDataFromText;
 import ren.zhaoruncheng.wrap.MapperReflectWrapping;
 import ren.zhaoruncheng.wrap.StringParsing;
 
@@ -16,9 +17,10 @@ public class MapperReflectWrappingTest {
 
 	@Test
 	public void testGetMapperReflectionString() {
-		String source="   pre142341655suf\r\n pre142341654suf  \r\n  pre142341654suf \r\n  pre142341654suf";
+		ImportDataFromText ifdt=new ImportDataFromText();
+		String source=ifdt.getStringFromFile();
 		System.out.println(source);
-		StringParsing sParsing=new StringParsing(source,"pre","suf");
+		StringParsing sParsing=new StringParsing(source);
 		MapperReflectWrapping mRW=new MapperReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
 		mRW.setId("pre142341655");
 		mRW.setName("Test");

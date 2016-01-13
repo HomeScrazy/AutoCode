@@ -21,6 +21,9 @@ public class StringParsing{
 	private String source;
 	
 	public String[] getResultAssembly(){
+		/**
+		 * if the prefix and the suffix is not null, every column string must contain it; 
+		 */
 		String[] resultAssembly=null;
 		if(splitkey!=null) resultAssembly=source.split(splitkey);else resultAssembly=source.split("\r\n");
 		int preLength,sufLength,i;
