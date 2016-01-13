@@ -17,7 +17,7 @@ package ren.zhaoruncheng.wrap;
  * </resultMap>
 
  */
-public class MapperReflectWrapping {
+public class ReflectWrapping extends BaseWrapping {
 	/**
 	 * the sourceAssembly is the column-value in the reflection,
 	 * and the resultAssembly is the property-value.
@@ -45,21 +45,24 @@ public class MapperReflectWrapping {
 		mapper.append(name);
 		mapper.append("\" type=\"");
 		mapper.append(className);
-		mapper.append("\" >\r\n");
-		mapper.append("  ");
+		mapper.append("\" >");
+		mapper.append(enterKey);
+		mapper.append(tabSize);
 	    mapper.append(" <id property=\"");
 	    mapper.append(id);
 	    mapper.append("\" column=\"");
 	    mapper.append(key);
-		mapper.append("\" />\r\n");
+		mapper.append("\" />");
+		mapper.append(enterKey);
 		for(int i=0;i<sourceAssembly.length;i++){
 			if(resultAssembly[i].equals(id)) continue;
-			mapper.append("  ");
+			mapper.append(tabSize);
 			mapper.append(" <result property=\"");
 			mapper.append(StringChecking.propertyTransformFormDatabaseToObject(resultAssembly[i]));
 			mapper.append("\" column=\"");
 			mapper.append(sourceAssembly[i]);
-	        mapper.append("\" />\r\n");
+	        mapper.append("\" />");
+	        mapper.append(enterKey);
 		}
 		mapper.append("</resultMap>");
 		return mapper.toString();
@@ -69,11 +72,11 @@ public class MapperReflectWrapping {
 	
 	
 	//============================common method============================
-	public MapperReflectWrapping(){
+	public ReflectWrapping(){
 		
 	}
 
-	public MapperReflectWrapping(String[] sourceAssembly,String[] resultAssembly){
+	public ReflectWrapping(String[] sourceAssembly,String[] resultAssembly){
 		this.sourceAssembly=sourceAssembly;
 		this.resultAssembly=resultAssembly;
 	}

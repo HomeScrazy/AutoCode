@@ -6,10 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ren.zhaoruncheng.sourcedata.ImportDataFromText;
-import ren.zhaoruncheng.wrap.MapperReflectWrapping;
+import ren.zhaoruncheng.wrap.ReflectWrapping;
 import ren.zhaoruncheng.wrap.StringParsing;
 
-public class MapperReflectWrappingTest {
+public class ReflectWrappingTest  {
 
 	@Before
 	public void setUp() throws Exception {
@@ -19,11 +19,11 @@ public class MapperReflectWrappingTest {
 	public void testGetMapperReflectionString() {
 		ImportDataFromText ifdt=new ImportDataFromText();
 		String source=ifdt.getStringFromFile();
-		System.out.println(source);
+		//System.out.println(source);
 		StringParsing sParsing=new StringParsing(source);
-		MapperReflectWrapping mRW=new MapperReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
-		mRW.setId("pre142341655");
-		mRW.setName("Test");
+		ReflectWrapping mRW=new ReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
+		mRW.setId("risk");
+		mRW.setName("id");
 		mRW.setClassName("com.runcheng.stringcheck");
 		System.out.println("==================result==================");
 		System.out.println(mRW.getMapperReflectionString());
