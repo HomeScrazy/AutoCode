@@ -3,7 +3,7 @@ package ren.zhaoruncheng.sourcedata;
 
 /**
  * 
- * @author Holmes
+ * @author crazy
  *
  * import source data(the String need to transform) form txt file
  */

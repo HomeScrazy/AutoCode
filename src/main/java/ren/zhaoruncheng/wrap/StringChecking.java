@@ -2,7 +2,7 @@ package ren.zhaoruncheng.wrap;
 
 /**
  * 
- * @author Holmes
+ * @author crazy
  *
  *this class is to wrap some string method such as replace chars.
  */

@@ -5,8 +5,10 @@ package ren.zhaoruncheng.wrap;
  *
  * this class is to wrap string array with mapper format
  * mapper is a xml file of mybatis framework, developer write sql sentence into mapper
- * the reflection of database table is a important function of mybatis, and the process of crate the reflection by ourselves
- * now I can throw this boring and repeat task to computer
+ * the reflection of database table is a important function of mybatis, it reflection a table to an objrct
+ * every columns of the table will match a property of class.
+ * the function of this class is to get a source strong array that import from database or file,
+ * and then, analyze the string and rebuild a string accord with the reflection format
  * the following is reflection format
  * <resultMap id="{map name}" type="{the javaBean you wanna reflect}">
 	  <id property="primary key of javabean" column="{primary key in databse table}" />
@@ -16,6 +18,10 @@ package ren.zhaoruncheng.wrap;
 
  */
 public class MapperReflectWrapping {
+	/**
+	 * the sourceAssembly is the column-value in the reflection,
+	 * and the resultAssembly is the property-value.
+	 */
 
 	private String[] sourceAssembly;
 	
@@ -30,8 +36,8 @@ public class MapperReflectWrapping {
 	private String className;
 	
 	public String getMapperReflectionString(){
-		/*
-		 * build the reflect string with the format
+		/**
+		 * build the reflection string in the correct format
 		 */
 		if(sourceAssembly.length!=resultAssembly.length) return null;
 		StringBuilder mapper=new StringBuilder();
@@ -92,6 +98,9 @@ public class MapperReflectWrapping {
 	}
 
 	public void setId(String id) {
+		/**
+		 * set the id of object 
+		 */
 		this.id = id;
 	}
 
@@ -100,6 +109,9 @@ public class MapperReflectWrapping {
 	}
 
 	public void setKey(String key) {
+		/**
+		 * set the primary key of table
+		 */
 		this.key = key;
 	}
 
