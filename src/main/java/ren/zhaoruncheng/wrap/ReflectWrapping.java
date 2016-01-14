@@ -41,27 +41,27 @@ public class ReflectWrapping extends BaseWrapping {
 		 */
 		if(sourceAssembly.length!=resultAssembly.length) return null;
 		StringBuilder mapper=new StringBuilder();
-		mapper.append("<resultMap id=\"");
-		mapper.append(name);
-		mapper.append("\" type=\"");
+		mapper.append("<resultMap type=\"");
 		mapper.append(className);
-		mapper.append("\" >");
+		mapper.append("\" id=\"");
+		mapper.append(name);
+		mapper.append("\">");
 		mapper.append(enterKey);
 		mapper.append(tabSize);
-	    mapper.append(" <id property=\"");
+	    mapper.append("<id property=\"");
 	    mapper.append(id);
-	    mapper.append("\" column=\"");
+	    mapper.append("\" column=\"");
 	    mapper.append(key);
-		mapper.append("\" />");
+		mapper.append("\"  />");
 		mapper.append(enterKey);
 		for(int i=0;i<sourceAssembly.length;i++){
 			if(resultAssembly[i].equals(id)) continue;
 			mapper.append(tabSize);
-			mapper.append(" <result property=\"");
+			mapper.append("<result property=\"");
 			mapper.append(StringChecking.propertyTransformFormDatabaseToObject(resultAssembly[i]));
-			mapper.append("\" column=\"");
+			mapper.append("\" column=\"");
 			mapper.append(sourceAssembly[i]);
-	        mapper.append("\" />");
+	        mapper.append("\"  />");
 	        mapper.append(enterKey);
 		}
 		mapper.append("</resultMap>");

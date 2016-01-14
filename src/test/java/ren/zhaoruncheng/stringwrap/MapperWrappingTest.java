@@ -6,17 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ren.zhaoruncheng.sourcedata.ImportDataFromText;
+import ren.zhaoruncheng.wrap.MapperWrapping;
 import ren.zhaoruncheng.wrap.ReflectWrapping;
 import ren.zhaoruncheng.wrap.StringParsing;
 
-public class ReflectWrappingTest  {
+public class MapperWrappingTest {
 
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void testGetMapperReflectionString() {
+	public void testGetMapperString() {
+		
 		ImportDataFromText ifdt=new ImportDataFromText();
 		String source=ifdt.getStringFromFile();
 		//System.out.println(source);
@@ -26,8 +28,12 @@ public class ReflectWrappingTest  {
 		mRW.setName("capitalraterecovery");
 		mRW.setClassName("com.sunyard.suncp.model.rate.CapitalRateRecovery");
 		mRW.setKey("id");
-		System.out.println("==================result==================");
-		System.out.println(mRW.getMapperReflectionString());
+		String reflectString=mRW.getMapperReflectionString();
+		
+		MapperWrapping mapperWrapping=new MapperWrapping();
+		mapperWrapping.setDaoName("com.sunyard.suncp.dao.rate.CapitalRateRecoveryDao");
+		mapperWrapping.setReflectString(reflectString);
+		System.out.println(mapperWrapping.getMapperString());
 		fail("Not yet implemented");
 	}
 

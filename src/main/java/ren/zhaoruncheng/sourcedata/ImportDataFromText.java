@@ -19,7 +19,7 @@ public class ImportDataFromText {
 	public String getStringFromFile(){
 		StringBuilder sb=new StringBuilder();
 		 try {
-             String encoding="GBK";
+             String encoding="UTF-8";
              
              File file=new File(FILEPATH);
              if(file.isFile() && file.exists()){ 

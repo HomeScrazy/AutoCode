@@ -11,5 +11,5 @@ public abstract class BaseWrapping {
 	
 	protected String tabSize="    ";
 	
-	protected String enterKey="\r\n";
+	protected String enterKey="\n";
 }
