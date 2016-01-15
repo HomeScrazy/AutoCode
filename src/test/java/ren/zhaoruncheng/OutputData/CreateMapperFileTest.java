@@ -1,6 +1,6 @@
 package ren.zhaoruncheng.OutputData;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
@@ -9,13 +9,17 @@ import org.junit.Test;
 
 import ren.zhaoruncheng.model.ColumnInformation;
 import ren.zhaoruncheng.model.TableInformation;
-import ren.zhaoruncheng.sourcedata.ImportDataFromText;
 import ren.zhaoruncheng.sourcedata.ImportTableInformationFromOracle;
 import ren.zhaoruncheng.wrap.MapperWrapping;
 import ren.zhaoruncheng.wrap.ReflectWrapping;
 import ren.zhaoruncheng.wrap.SelectListWrapping;
 import ren.zhaoruncheng.wrap.StringParsing;
-
+import ren.zhaoruncheng.wrap.methods.DeleteWrapping;
+import ren.zhaoruncheng.wrap.methods.InsertWrapping;
+import ren.zhaoruncheng.wrap.methods.UpdateWrapping;
+/**
+ * use it to create mapper file
+ */
 public class CreateMapperFileTest {
 
 	@Before
@@ -42,6 +46,20 @@ public class CreateMapperFileTest {
 		//dao name
 		String daoName="com.sunyard.suncp.dao.rate.RiskPremiumDao";
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//=========================don't need modify====================================
 		
@@ -83,26 +101,46 @@ public class CreateMapperFileTest {
 		mRW.setKey(reflectKey);
 		String reflectString=mRW.getMapperReflectionString();
 		SelectListWrapping select=new SelectListWrapping();
+		InsertWrapping insert=new InsertWrapping();
+		UpdateWrapping update=new UpdateWrapping();
+		DeleteWrapping delete=new DeleteWrapping();
 		//build select method name
-		selectMethodName="select"+mRW.getClassName()+"list";
+		selectMethodName="select"+mRW.getClassName()+"List";
 		//build insert method name
 		insertMethodName="insert"+mRW.getClassName();
 		//build delete method name
 		deleteMethodName="delete"+mRW.getClassName()+"ById";
 		//update delete method name
-		updateMethodName="updata"+mRW.getClassName();
+		updateMethodName="update"+mRW.getClassName();
+		
 		
 		select.setMethodName(selectMethodName);
 		select.setReturnType(reflectName);
 		select.setTableInformation(ti);
-		select.setTableName("T_RISK_PREMIUM");
+		select.setTableName(tableName);
+		
+		insert.setMethodName(insertMethodName);
+		insert.setTableInformation(ti);
+		insert.setTableName(tableName);
+		insert.setParamterType(packageName+className);
+		
+		update.setMethodName(updateMethodName);
+		update.setTableInformation(ti);
+		update.setTableName(tableName);
+		update.setParamterType(packageName+className);
+		
+		delete.setMethodName(deleteMethodName);
+		delete.setTableName(tableName);
+		
 		MapperWrapping mapperWrapping=new MapperWrapping();
 		mapperWrapping.setDaoName(daoName);
 		mapperWrapping.setReflectString(reflectString);
-		mapperWrapping.setSelectString(select.getSelectListString());
+		//method string
+		String methodString=select.getSelectListString()+insert.getInsertString()+update.getUpdateString()+delete.getDeleteString();
+		mapperWrapping.setMethodString(methodString);
 		createMapperFile.setMapperString(mapperWrapping.getMapperString());
-		System.out.println(mapperWrapping.getMapperString());
-		//createMapperFile.createMapper();
+		//System.out.println(mapperWrapping.getMapperString());
+		createMapperFile.createMapper();
 		fail("Not yet implemented");
 	}
 

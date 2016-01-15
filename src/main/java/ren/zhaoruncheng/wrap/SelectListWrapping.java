@@ -1,5 +1,7 @@
 package ren.zhaoruncheng.wrap;
 
+import java.util.List;
+
 import ren.zhaoruncheng.model.ColumnInformation;
 import ren.zhaoruncheng.model.TableInformation;
 
@@ -28,10 +30,12 @@ public class SelectListWrapping extends BaseWrapping {
 		select.append(enterKey);
 		select.append(tabSize);
 		select.append("select ");
-		for(ColumnInformation index:tableInformation.getColumnList()){
-			select.append(index.getCloumnName().toLowerCase());
-			select.append(" ");
+		List<ColumnInformation> cif=tableInformation.getColumnList();
+		for(int i=0;i<cif.size();i++){
+			if(i!=0) select.append(",");
+			select.append(cif.get(i).getCloumnName().toLowerCase());
 		}
+		select.append(" ");
 		select.append("from ");
 		select.append(tableName.toLowerCase());
 		select.append(enterKey);

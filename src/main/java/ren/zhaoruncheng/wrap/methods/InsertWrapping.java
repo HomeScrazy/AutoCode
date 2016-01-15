@@ -1,7 +1,12 @@
 package ren.zhaoruncheng.wrap.methods;
-
+/**
+ * insert method wrapping 
+ * now the id of table and object is fixed "id"
+ */
+import ren.zhaoruncheng.model.ColumnInformation;
 import ren.zhaoruncheng.model.TableInformation;
 import ren.zhaoruncheng.wrap.BaseWrapping;
+import ren.zhaoruncheng.wrap.StringChecking;
 
 public class InsertWrapping extends BaseWrapping{
 
@@ -11,12 +16,15 @@ public class InsertWrapping extends BaseWrapping{
 	
 	private String tableName;
 	
-	private String[] resultAssembly;
+	private String paramterType;
+	
 	
 	public String getInsertString(){
 		StringBuilder insert=new StringBuilder();
 		insert.append("<insert id=\"");
 		insert.append(methodName);
+		insert.append("\" parameterType=\"");
+		insert.append(paramterType);
 		insert.append("\">");
 		insert.append(enterKey);
 		insert.append(tabSize);
@@ -39,8 +47,29 @@ public class InsertWrapping extends BaseWrapping{
 		insert.append(enterKey);
 		insert.append(tabSize);
 		insert.append("#{id,jdbcType=INTEGER},");
-		
+		insert.append(enterKey);
+		insert.append(tabSize);
+		int i=0;
+		for(ColumnInformation index:tableInformation.getColumnList()){
+			if(i!=0) {
+				insert.append(",");
+				insert.append(enterKey);
+				insert.append(tabSize);
+			}
+			if(index.getCloumnName().toLowerCase().equals("id")) continue;
+			insert.append("#{");
+			insert.append(StringChecking.propertyTransformFormDatabaseToObject(index.getCloumnName()));
+			insert.append(",jdbcType=");
+			if(index.getDataType().equals("VARCHAR2"))
+			insert.append("VARCHAR");
+			else insert.append(index.getDataType());
+			insert.append("}");
+			i++;
+		}
+		insert.append(")");
+		insert.append(enterKey);
 		insert.append("</insert>");
+		insert.append(enterKey);
 		return insert.toString();
 	}
 
@@ -68,11 +97,13 @@ public class InsertWrapping extends BaseWrapping{
 		this.tableName = tableName;
 	}
 
-	public String[] getResultAssembly() {
-		return resultAssembly;
+	public String getParamterType() {
+		return paramterType;
 	}
 
-	public void setResultAssembly(String[] resultAssembly) {
-		this.resultAssembly = resultAssembly;
+	public void setParamterType(String paramterType) {
+		this.paramterType = paramterType;
 	}
+
+	
 }

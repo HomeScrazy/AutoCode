@@ -14,7 +14,7 @@ public class MapperWrapping extends BaseWrapping {
 	
 	private String reflectString;
 	
-	private String selectString;
+	private String methodString;
 	
 	public String getMapperString(){
 		
@@ -41,7 +41,7 @@ public class MapperWrapping extends BaseWrapping {
 		
 		//add selectList string;
 		mapper.append(enterKey);
-		mapper.append(selectString);
+		mapper.append(methodString);
 		
 		mapper.append(enterKey);
 		mapper.append("</mapper>");
@@ -76,11 +76,14 @@ public class MapperWrapping extends BaseWrapping {
 		this.reflectString = reflectString;
 	}
 	
-	public String getSelectString(){
-		return selectString;
+
+	public String getMethodString() {
+		return methodString;
 	}
-	
-	public void setSelectString(String selectString){
-		this.selectString=selectString;
+
+
+
+	public void setMethodString(String methodString) {
+		this.methodString = methodString;
 	}
 }

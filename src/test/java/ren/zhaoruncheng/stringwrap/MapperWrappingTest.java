@@ -55,7 +55,7 @@ public class MapperWrappingTest {
 		MapperWrapping mapperWrapping=new MapperWrapping();
 		mapperWrapping.setDaoName("com.sunyard.suncp.dao.rate.CapitalRateRecoveryDao");
 		mapperWrapping.setReflectString(reflectString);
-		mapperWrapping.setSelectString(select.getSelectListString());
+		mapperWrapping.setMethodString(select.getSelectListString());
 		System.out.println(mapperWrapping.getMapperString());
 		fail("Not yet implemented");
 	}

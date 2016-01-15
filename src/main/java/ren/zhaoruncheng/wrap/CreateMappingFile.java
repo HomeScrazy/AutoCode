@@ -44,6 +44,8 @@ public class CreateMappingFile {
 		String deleteMethodName;
 		// update method name;
 		String updateMethodName;
+		//method string
+		String methodString;
 		String filePath = xmlFilePath + xmlFileName;
 		CreateMapperFile createMapperFile = new CreateMapperFile(filePath);
 		ImportTableInformationFromOracle itifo = new ImportTableInformationFromOracle();
@@ -86,7 +88,7 @@ public class CreateMappingFile {
 		MapperWrapping mapperWrapping = new MapperWrapping();
 		mapperWrapping.setDaoName(daoName);
 		mapperWrapping.setReflectString(reflectString);
-		mapperWrapping.setSelectString(select.getSelectListString());
+	
 		createMapperFile.setMapperString(mapperWrapping.getMapperString());
 		System.out.println(mapperWrapping.getMapperString());
 		// createMapperFile.createMapper();

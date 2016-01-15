@@ -37,6 +37,7 @@ public class SelectListWrapping extends BaseWrapping {
 		select.append(tableName.toLowerCase());
 		select.append(enterKey);
 		select.append("</select>");
+		select.append(enterKey);
 		return select.toString();
 	}
 
