@@ -2,10 +2,15 @@ package ren.zhaoruncheng.OutputData;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import ren.zhaoruncheng.model.ColumnInformation;
+import ren.zhaoruncheng.model.TableInformation;
 import ren.zhaoruncheng.sourcedata.ImportDataFromText;
+import ren.zhaoruncheng.sourcedata.ImportTableInformationFromOracle;
 import ren.zhaoruncheng.wrap.MapperWrapping;
 import ren.zhaoruncheng.wrap.ReflectWrapping;
 import ren.zhaoruncheng.wrap.StringParsing;
@@ -18,19 +23,45 @@ public class CreateMapperFileTest {
 
 	@Test
 	public void testCreateMapper() {
-		String path="E:\\Runcheng\\sunyard_developer\\workspaces\\ee\\SunCP\\src\\mapper\\";
+		//xml file name
 		String name="test.xml";
+		// the table name of database
+		String tableName="T_SYS_RATE";
+		// the resultMap's id(name)
+		String reflectName="";
+		//the resultMap's primary key of object
+		String reflectId="id";
+		//the resultMap's primary key of table
+		String reflectKey="";
+		//the class name mapper match
+		String className="";
+		
+		
+		//=========================don't need modify====================================
+		String path="E:\\Runcheng\\sunyard_developer\\workspaces\\ee\\SunCP\\src\\mapper\\";
 		String filePath=path+name;
 		CreateMapperFile createMapperFile=new CreateMapperFile(filePath);
-		ImportDataFromText ifdt=new ImportDataFromText();
-		String source=ifdt.getStringFromFile();
+		ImportTableInformationFromOracle itifo=new ImportTableInformationFromOracle();
+		itifo.setConnectString("jdbc:oracle:thin:@172.16.4.177:1521:ORCL");
+		itifo.setUserName("comprice");
+		itifo.setPassword("comprice");
+		TableInformation ti=itifo.GetTableInformation(tableName);
+		StringBuilder sb=new StringBuilder();
+		List<ColumnInformation> clist=ti.getColumnList();
+		for(ColumnInformation index:clist){
+			sb.append(index.getCloumnName());
+			sb.append("\n");
+		}
+		
+		String source=sb.toString();
 		//System.out.println(source);
 		StringParsing sParsing=new StringParsing(source);
+		sParsing.setSplitkey("\n");
 		ReflectWrapping mRW=new ReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
-		mRW.setId("id");
-		mRW.setName("capitalraterecovery");
-		mRW.setClassName("com.sunyard.suncp.model.rate.CapitalRateRecovery");
-		mRW.setKey("id");
+		mRW.setId(reflectId);
+		mRW.setName(reflectName);
+		mRW.setClassName(className);
+		mRW.setKey(reflectKey);
 		String reflectString=mRW.getMapperReflectionString();
 		
 		MapperWrapping mapperWrapping=new MapperWrapping();
