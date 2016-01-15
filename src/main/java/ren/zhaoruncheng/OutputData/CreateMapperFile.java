@@ -12,9 +12,7 @@ import java.io.OutputStreamWriter;
 
 public class CreateMapperFile {
 	
-
-	
-	private String filePath;
+private String filePath;
 	
 	private String mapperString;
 	
@@ -68,6 +66,4 @@ public class CreateMapperFile {
 	public void setMapperString(String mapperString) {
 		this.mapperString = mapperString;
 	}
-	
-	
 }

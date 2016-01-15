@@ -3,9 +3,7 @@ package ren.zhaoruncheng.OutputData;
 import static org.junit.Assert.fail;
 
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
+import java.util.Scanner;
 
 import ren.zhaoruncheng.model.ColumnInformation;
 import ren.zhaoruncheng.model.TableInformation;
@@ -17,35 +15,28 @@ import ren.zhaoruncheng.wrap.StringParsing;
 import ren.zhaoruncheng.wrap.methods.DeleteWrapping;
 import ren.zhaoruncheng.wrap.methods.InsertWrapping;
 import ren.zhaoruncheng.wrap.methods.UpdateWrapping;
-/**
- * use it to create mapper file
- */
-public class CreateMapperFileTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@Test
-	public void testCreateMapper() {
-		//xml file name
-		String name="CapitalRateRecoveryMapper.xml";
-		// the table name of database
-		String tableName="T_Capital_Rate_Recovery";
-		// the resultMap's id(name)
-		String reflectName="capitalraterecovery";
-		//the resultMap's primary key of object
-		String reflectId="id";
-		//the resultMap's primary key of table
-		String reflectKey="id";
-		//the package name mapper match
-		String packageName="com.sunyard.suncp.model.rate.";
-		//the class name mapper match
-		String className="CapitalRateRecovery";
-		
-		//dao name
-		String daoName="com.sunyard.suncp.dao.rate.CapitalRateRecoveryDao";
-
+public class AutoCompleteMapper {
+	
+	private String path;
+	
+	private String name;
+	
+	private String tableName;
+	
+	private String reflectName;
+	
+	private String reflectId;
+	
+	private String reflectKey;
+	
+	private String packageName;
+	
+	private String className;
+	
+	private String daoName;
+	
+	public void AutoComplete() {
 		
 		
 		
@@ -57,11 +48,7 @@ public class CreateMapperFileTest {
 		
 		
 		
-		
-		
-		
-		
-		//=========================don't need modify====================================
+	
 		
 		//selectMethod name
 		String selectMethodName;
@@ -72,7 +59,6 @@ public class CreateMapperFileTest {
 		//update method name;
 		String updateMethodName;
 		
-		String path="E:\\Runcheng\\sunyard_developer\\workspaces\\ee\\SunCP\\src\\mapper\\";
 		String filePath=path+name;
 		CreateMapperFile createMapperFile=new CreateMapperFile(filePath);
 		ImportTableInformationFromOracle itifo=new ImportTableInformationFromOracle();
@@ -143,5 +129,4 @@ public class CreateMapperFileTest {
 		createMapperFile.createMapper();
 		fail("Not yet implemented");
 	}
-
 }
