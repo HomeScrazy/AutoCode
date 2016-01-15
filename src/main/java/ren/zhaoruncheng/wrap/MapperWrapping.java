@@ -14,12 +14,13 @@ public class MapperWrapping extends BaseWrapping {
 	
 	private String reflectString;
 	
+	private String selectString;
+	
 	public String getMapperString(){
 		
 		/**
 		 * wrap the source data and return the wrapped string 
 		 */
-		
 		//builder the base of xml format
 		StringBuilder mapper=new StringBuilder();
 		mapper.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -37,6 +38,10 @@ public class MapperWrapping extends BaseWrapping {
 		//add reflect string
 		mapper.append(enterKey);
 		mapper.append(reflectString);
+		
+		//add selectList string;
+		mapper.append(enterKey);
+		mapper.append(selectString);
 		
 		mapper.append(enterKey);
 		mapper.append("</mapper>");
@@ -69,5 +74,13 @@ public class MapperWrapping extends BaseWrapping {
 
 	public void setReflectString(String reflectString) {
 		this.reflectString = reflectString;
+	}
+	
+	public String getSelectString(){
+		return selectString;
+	}
+	
+	public void setSelectString(String selectString){
+		this.selectString=selectString;
 	}
 }

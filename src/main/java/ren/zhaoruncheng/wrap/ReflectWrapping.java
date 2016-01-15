@@ -33,6 +33,8 @@ public class ReflectWrapping extends BaseWrapping {
 	
 	private String name;
 	
+	private String packageName;
+	
 	private String className;
 	
 	public String getMapperReflectionString(){
@@ -42,7 +44,7 @@ public class ReflectWrapping extends BaseWrapping {
 		if(sourceAssembly.length!=resultAssembly.length) return null;
 		StringBuilder mapper=new StringBuilder();
 		mapper.append("<resultMap type=\"");
-		mapper.append(className);
+		mapper.append(packageName+className);
 		mapper.append("\" id=\"");
 		mapper.append(name);
 		mapper.append("\">");
@@ -55,12 +57,12 @@ public class ReflectWrapping extends BaseWrapping {
 		mapper.append("\"  />");
 		mapper.append(enterKey);
 		for(int i=0;i<sourceAssembly.length;i++){
-			if(resultAssembly[i].equals(id)) continue;
+			if(resultAssembly[i].toLowerCase().equals(id)) continue;
 			mapper.append(tabSize);
 			mapper.append("<result property=\"");
 			mapper.append(StringChecking.propertyTransformFormDatabaseToObject(resultAssembly[i]));
 			mapper.append("\" column=\"");
-			mapper.append(sourceAssembly[i]);
+			mapper.append(sourceAssembly[i].toLowerCase());
 	        mapper.append("\"  />");
 	        mapper.append(enterKey);
 		}
@@ -132,6 +134,20 @@ public class ReflectWrapping extends BaseWrapping {
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+
+
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+
+
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
 	}
 	
 }
