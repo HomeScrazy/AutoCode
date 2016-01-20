@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="daoPackageName.RiskPremiumDao">
+<resultMap type="model package.RiskPremium" id="riskpremium">
+    <id property="id" column="id"  />
+    <result property="effdate" column="effdate"  />
+    <result property="basRiskPremium" column="bas_risk_premium"  />
+    <result property="selfRiskPremium" column="self_risk_premium"  />
+</resultMap>
+<select id="selectRiskPremiumList" resultMap="riskpremium">
+    select id,effdate,bas_risk_premium,self_risk_premium from t_risk_premium
+</select>
+<insert id="insertRiskPremium" parameterType="model packageRiskPremium">
+    <selectKey order="BEFORE" keyProperty="id" resultType="int">
+        select SEQ_T_RISK_PREMIUM.nextval as id from dual
+    </selectKey>
+    insert into t_risk_premium values(
+    #{id,jdbcType=INTEGER},
+    #{effdate,jdbcType=DATE},
+    #{basRiskPremium,jdbcType=VARCHAR},
+    #{selfRiskPremium,jdbcType=VARCHAR})
+</insert>
+<update id="updateRiskPremium" parameterType="model packageRiskPremium">
+    update t_risk_premium set 
+    effdate=#{effdate,jdbcType=DATE},
+    bas_risk_premium=#{basRiskPremium,jdbcType=VARCHAR},
+    self_risk_premium=#{selfRiskPremium,jdbcType=VARCHAR}
+    where id=#{id,jdbcType=INTEGER}
+</update>
+<delete id="deleteRiskPremiumById" parameterType="java.lang.Integer">
+    delete t_risk_premium where id=#{id,jdbcType=INTEGER}
+</delete>
+
+</mapper>
