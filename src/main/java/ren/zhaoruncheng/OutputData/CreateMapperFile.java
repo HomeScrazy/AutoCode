@@ -12,9 +12,9 @@ import java.io.OutputStreamWriter;
 
 public class CreateMapperFile {
 	
-private String filePath;
+	private String filePath;
 	
-	private String mapperString;
+	private String createString;
 	
 	public void createMapper(){
 		/**
@@ -26,7 +26,7 @@ private String filePath;
 		try{
 			OutputStreamWriter writer=new OutputStreamWriter(new FileOutputStream(file),encoding);
 			BufferedWriter bufferedWriter=new BufferedWriter(writer);
-			bufferedWriter.write(mapperString);
+			bufferedWriter.write(createString);
 			bufferedWriter.close();
 			
 		}catch(Exception e) {
@@ -36,15 +36,19 @@ private String filePath;
 		
 	}
 	
+	
 	public CreateMapperFile(String filePath){
 	
 		this.filePath=filePath;
 		}
+	public CreateMapperFile(){
+		
+		}
 	
-	public CreateMapperFile(String filePath,String mapperString){
+	public CreateMapperFile(String filePath,String createString){
 	
 		this.filePath=filePath;
-		this.mapperString=mapperString;
+		this.createString=createString;
 	}
 
 
@@ -60,10 +64,10 @@ private String filePath;
 	}
 
 	public String getMapperString() {
-		return mapperString;
+		return createString;
 	}
 
-	public void setMapperString(String mapperString) {
-		this.mapperString = mapperString;
+	public void setMapperString(String createString) {
+		this.createString = createString;
 	}
 }

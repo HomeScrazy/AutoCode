@@ -21,6 +21,7 @@ public class InsertWrapping extends BaseWrapping{
 	
 	public String getInsertString(){
 		StringBuilder insert=new StringBuilder();
+		insert.append(enterKey);
 		insert.append("<insert id=\"");
 		insert.append(methodName);
 		insert.append("\" parameterType=\"");

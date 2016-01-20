@@ -44,7 +44,7 @@ public class ReflectWrapping extends BaseWrapping {
 		if(sourceAssembly.length!=resultAssembly.length) return null;
 		StringBuilder mapper=new StringBuilder();
 		mapper.append("<resultMap type=\"");
-		mapper.append(packageName+className);
+		mapper.append(packageName+"."+className);
 		mapper.append("\" id=\"");
 		mapper.append(name);
 		mapper.append("\">");

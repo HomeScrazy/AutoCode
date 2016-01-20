@@ -21,6 +21,7 @@ public class SelectListWrapping extends BaseWrapping {
 	
 	public String getSelectListString(){
 		StringBuilder select=new StringBuilder();
+		select.append(enterKey);
 		select.append("<select id=\"");
 		select.append(methodName);
 		select.append("\" resultMap=\"");
@@ -37,6 +38,7 @@ public class SelectListWrapping extends BaseWrapping {
 		select.append(tableName.toLowerCase());
 		select.append(enterKey);
 		select.append("</select>");
+		select.append(enterKey);
 		select.append(enterKey);
 		return select.toString();
 	}

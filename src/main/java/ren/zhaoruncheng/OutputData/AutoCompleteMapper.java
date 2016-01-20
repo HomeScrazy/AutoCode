@@ -1,9 +1,11 @@
 package ren.zhaoruncheng.OutputData;
-
-import static org.junit.Assert.fail;
+/**
+ * auto-complete the mapper
+ * input: table name,package name(model),class name(model),dao name(include pacakge),
+ */
 
 import java.util.List;
-import java.util.Scanner;
+
 
 import ren.zhaoruncheng.model.ColumnInformation;
 import ren.zhaoruncheng.model.TableInformation;
@@ -18,17 +20,13 @@ import ren.zhaoruncheng.wrap.methods.UpdateWrapping;
 
 public class AutoCompleteMapper {
 	
-	private String path;
-	
-	private String name;
-	
 	private String tableName;
 	
-	private String reflectName;
+	//private String reflectName;
 	
-	private String reflectId;
+	//private String reflectId;
 	
-	private String reflectKey;
+	//private String reflectKey;
 	
 	private String packageName;
 	
@@ -36,19 +34,13 @@ public class AutoCompleteMapper {
 	
 	private String daoName;
 	
-	public void AutoComplete() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	public String AutoComplete() {
 	
+		//Auto-complete some String
+		String reflectId="id";
+		String reflectKey="id";
+		//String daoName=className+"Dao";
+		String reflectName=className.toLowerCase();
 		
 		//selectMethod name
 		String selectMethodName;
@@ -59,8 +51,6 @@ public class AutoCompleteMapper {
 		//update method name;
 		String updateMethodName;
 		
-		String filePath=path+name;
-		CreateMapperFile createMapperFile=new CreateMapperFile(filePath);
 		ImportTableInformationFromOracle itifo=new ImportTableInformationFromOracle();
 		itifo.setConnectString("jdbc:oracle:thin:@172.16.4.177:1521:ORCL");
 		itifo.setUserName("comprice");
@@ -75,8 +65,8 @@ public class AutoCompleteMapper {
 		
 		String source=sb.toString();
 		
-
-		//System.out.println(source);
+		
+		//create StringParsing analyze source String
 		StringParsing sParsing=new StringParsing(source);
 		sParsing.setSplitkey("\n");
 		ReflectWrapping mRW=new ReflectWrapping(sParsing.getSouceAssembly(),sParsing.getResultAssembly());
@@ -124,9 +114,41 @@ public class AutoCompleteMapper {
 		//method string
 		String methodString=select.getSelectListString()+insert.getInsertString()+update.getUpdateString()+delete.getDeleteString();
 		mapperWrapping.setMethodString(methodString);
-		createMapperFile.setMapperString(mapperWrapping.getMapperString());
-		//System.out.println(mapperWrapping.getMapperString());
-		createMapperFile.createMapper();
-		fail("Not yet implemented");
+		return mapperWrapping.getMapperString();
 	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	
+	
+
+	public String getDaoName() {
+		return daoName;
+	}
+
+	public void setDaoName(String daoName) {
+		this.daoName = daoName;
+	}
+	
 }
