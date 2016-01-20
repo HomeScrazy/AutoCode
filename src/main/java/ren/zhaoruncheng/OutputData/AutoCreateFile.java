@@ -36,14 +36,14 @@ public class AutoCreateFile {
 		aotoCompleteMapper.setDaoName(daoPackage+"."+daoName);
 		aotoCompleteMapper.setTableName(tableName);
 		String mapperName=className+"Mappering.xml";
-		createMapperFile.setFilePath("E:\\Runcheng\\tools\\AutoCode\\autofile\\mapper\\"+mapperName);
+		createMapperFile.setFilePath("E:\\Runcheng\\tools\\AutoCode\\autofile\\java\\mapper\\"+mapperName);
 		createMapperFile.setMapperString(aotoCompleteMapper.AutoComplete());
 		createMapperFile.createMapper();
 		String daolayer=className+"Dao.java";
 		DaoLayerWrapping daoWrap=new DaoLayerWrapping();
 		daoWrap.setClassName(daoName);
 		daoWrap.setPaceageName(daoPackage);
-		createMapperFile.setFilePath("E:\\Runcheng\\tools\\AutoCode\\autofile\\dao\\"+daolayer);
+		createMapperFile.setFilePath("E:\\Runcheng\\tools\\AutoCode\\autofile\\java\\dao\\"+daolayer);
 		createMapperFile.setMapperString(daoWrap.getDaoWrappintString());
 		createMapperFile.createMapper();
 		System.out.println("complete!");

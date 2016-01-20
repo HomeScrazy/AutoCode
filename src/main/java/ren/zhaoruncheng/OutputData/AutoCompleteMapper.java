@@ -2,6 +2,7 @@ package ren.zhaoruncheng.OutputData;
 /**
  * auto-complete the mapper
  * input: table name,package name(model),class name(model),dao name(include pacakge),
+ * set database setting in this class
  */
 
 import java.util.List;

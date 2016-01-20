@@ -12,7 +12,7 @@ import java.util.List;
 public class TableInformation {
 
 	private List<ColumnInformation> columnList;
-	
+	private String tableName;
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 		sb.append("table information ");
@@ -40,6 +40,12 @@ public class TableInformation {
 
 	public void setColumnList(List<ColumnInformation> columnList) {
 		this.columnList = columnList;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	
 	
