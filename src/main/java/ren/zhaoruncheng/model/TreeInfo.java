@@ -1,10 +1,3 @@
-package ren.zhaoruncheng.model;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 /**
  * 
  * @author Holmes
@@ -13,6 +6,13 @@ import java.util.List;
  * store directory information
  * include two list one is used to store directories and the other is used to store files
  */
+package ren.zhaoruncheng.model;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class TreeInfo implements Iterable<File>{
 
 	private List<File> files=new ArrayList<File>();
