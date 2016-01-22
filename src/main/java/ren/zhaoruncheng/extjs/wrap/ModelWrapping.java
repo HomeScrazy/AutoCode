@@ -37,7 +37,7 @@ public class ModelWrapping extends BaseWrapping{
 			extjs.append(tabSize);
 			extjs.append("{name:'");
 			extjs.append(StringChecking.propertyTransformFormDatabaseToObject(index.getCloumnName()));
-			extjs.append("},");
+			extjs.append("'},");
 		}
 		extjs.append(enterKey);
 		extjs.append(tabSize);

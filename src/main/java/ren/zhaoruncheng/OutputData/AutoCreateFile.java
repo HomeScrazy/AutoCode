@@ -41,7 +41,7 @@ public class AutoCreateFile {
 		createMapperFile.createMapper();
 		String daolayer=className+"Dao.java";
 		DaoLayerWrapping daoWrap=new DaoLayerWrapping();
-		daoWrap.setClassName(daoName);
+		daoWrap.setClassName(className);
 		daoWrap.setPaceageName(daoPackage);
 		createMapperFile.setFilePath("E:\\Runcheng\\tools\\AutoCode\\autofile\\java\\dao\\"+daolayer);
 		createMapperFile.setMapperString(daoWrap.getDaoWrappintString());

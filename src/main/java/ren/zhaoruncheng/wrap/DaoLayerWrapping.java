@@ -17,11 +17,7 @@ public class DaoLayerWrapping extends BaseWrapping{
 	
 	public String getDaoWrappintString(){
 		StringBuilder dao=new StringBuilder();
-		dao.append("package ");
-		dao.append(packageName);
-		dao.append(";");
-		dao.append(enterKey);
-		dao.append("public class ");
+		dao.append("public interface ");
 		dao.append(className+"Dao");
 		dao.append("{");
 		dao.append(enterKey);

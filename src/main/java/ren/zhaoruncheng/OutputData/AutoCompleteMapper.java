@@ -99,12 +99,12 @@ public class AutoCompleteMapper {
 		insert.setMethodName(insertMethodName);
 		insert.setTableInformation(ti);
 		insert.setTableName(tableName);
-		insert.setParamterType(packageName+className);
+		insert.setParamterType(packageName+"."+className);
 		
 		update.setMethodName(updateMethodName);
 		update.setTableInformation(ti);
 		update.setTableName(tableName);
-		update.setParamterType(packageName+className);
+		update.setParamterType(packageName+"."+className);
 		
 		delete.setMethodName(deleteMethodName);
 		delete.setTableName(tableName);

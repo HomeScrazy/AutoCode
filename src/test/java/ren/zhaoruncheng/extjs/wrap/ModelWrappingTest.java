@@ -27,9 +27,9 @@ public class ModelWrappingTest {
 		itifo.setConnectString("jdbc:oracle:thin:@172.16.4.177:1521:ORCL");
 		itifo.setUserName("comprice");
 		itifo.setPassword("comprice");
-		TableInformation ti=itifo.GetTableInformation("T_RISK_PREMIUM");
+		TableInformation ti=itifo.GetTableInformation("T_BAS_RATE");
 		modelWrapping.setTableInformation(ti);
-		modelWrapping.setModelName("RiskPremiumModel");
+		modelWrapping.setModelName("BasRateModel");
 		System.out.println(modelWrapping.extjsModelWarppingString());
 		fail("Not yet implemented");
 	}
